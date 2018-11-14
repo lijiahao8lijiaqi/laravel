@@ -10,13 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//主页面
+Route::get ('/','HomeController@index')->name ('home');
+//用户管理
+Route::get ('login','UserController@login')->name ('login');
+Route::get ('register','UserController@register')->name ('register');
+Route::post('register','UserController@stoer')->name ('register');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get ('edu/index/index','Edu\IndexController@index')->name ('edu.index.index');
-Route::get ('edu/index/create','Edu\IndexController@create')->name ('edu.index.create');
-Route::post('edu/index/store','Edu\IndexController@store')->name ('edu.index.store');
-
-Route::resource ('edu/article','Edu\ArticleController');
-//route list
+//工具
+Route::any ('code/send','Util\CodeController@send')->name ('code.send');
