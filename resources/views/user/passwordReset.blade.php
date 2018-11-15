@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,102 +15,62 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset ('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Dashkit</title>
+    <title>重置密码</title>
 </head>
 <body class="d-flex align-items-center bg-white border-top-2 border-primary">
 
 <!-- CONTENT
-
 ================================================== -->
 <div class="container">
-
-    <div class="row align-items-center">
-
-        <div class="col-12 col-md-6 offset-xl-2 offset-md-1 order-md-2 mb-5 mb-md-0">
-
-            <!-- Image -->
-            <div class="text-center">
-                <img src="{{asset ('org/Dashkit-1.1.2/assets')}}/img/illustrations/happiness.svg" alt="..." class="img-fluid">
-            </div>
-
-        </div>
-        <div class="col-12 col-md-5 col-xl-4 order-md-1 my-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-5 col-xl-4 my-5">
 
             <!-- Heading -->
             <h1 class="display-4 text-center mb-3">
-                注册
+                修改密码
             </h1>
 
             <!-- Subheading -->
             <p class="text-muted text-center mb-5">
-                Free access to our dashboard.
+
             </p>
 
             <!-- Form -->
-            <form action="{{route ('register')}}" method="post">
-                @csrf
-                <!-- Email address -->
+            <form method="post" action="{{route ('passwordReset')}}">
+            @csrf
+
                 <div class="form-group">
 
                     <!-- Label -->
-                    <label>
-                        用户名
-                    </label>
-
-                    <!-- Input -->
-                    <input type="text" name="name" value="{{old ('name')}}" class="form-control" placeholder="请输入用户名">
-
-                </div>
-                <div class="form-group">
-
-                    <!-- Label -->
-                    <label>
-                        邮箱
-                    </label>
+                    <label>邮箱</label>
 
                     <!-- Input -->
                     <input type="email" name="email" value="714438134@qq.com" class="form-control" placeholder="请输入邮箱">
 
                 </div>
-                <!-- 密码 -->
                 <div class="form-group">
 
                     <!-- Label -->
-                    <label>
-                        密码
-                    </label>
-
-                    <!-- Input group -->
-                    <div class="input-group input-group-merge">
-
-                        <!-- Input -->
-                        <input type="password" name="password" class="form-control form-control-appended" placeholder="请输入密码">
-
-                        <!-- Icon -->
-                        <div class="input-group-append">
-                  <span class="input-group-text">
-                    <i class="fe fe-eye"></i>
-                  </span>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="form-group">
-
-                    <!-- Label -->
-                    <label>
-                        确定密码
-                    </label>
+                    <label>新密码</label>
 
                     <!-- Input -->
-                    <input type="password" name="password_confirmation" class="form-control" placeholder="请再次输入密码">
+                    <input type="password" name="password" class="form-control form-control-appended " placeholder="输入新密码">
 
                 </div>
                 <div class="form-group">
+
                     <!-- Label -->
-                    <label>
-                        验证码
-                    </label>
+                    <label>确定新密码</label>
+
+                    <!-- Input -->
+                    <input type="password" name="password_confirmation" class="form-control form-control-appended" placeholder="再次输入新密码">
+
+                </div>
+                <div class="form-group">
+
+                    <!-- Label -->
+                    <label>验证码</label>
+
                     <!-- Input -->
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" placeholder="请输入验证码" name="code" value="" aria-label="Recipient's username" aria-describedby="basic-addon2">
@@ -119,21 +78,18 @@
                             <button class="btn btn-outline-secondary" type="button" id="bt">发送验证码</button>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Submit -->
                 <button class="btn btn-lg btn-block btn-primary mb-3">
-
-                    注册账号
+                    修改密码
                 </button>
 
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
-                        {{--<a href="{{route ('passwordReset')}}" style="font-size: 15px">修改密码</a>--}}
-                        {{--<a href="{{route ('home')}}" style="font-size: 18px">返回首页</a><br><br>--}}
-                        已有账号&nbsp|&nbsp <a href="{{route ('login')}}" style="font-size: 12px; color: red">去登陆</a>.
-
+                        修改完成&nbsp|&nbsp <a href="{{route ('login')}}" style="color: red">去登陆</a>.
                     </small>
                 </div>
 
@@ -143,6 +99,8 @@
     </div> <!-- / .row -->
 </div> <!-- / .container -->
 
+<!-- JAVASCRIPT
+================================================== -->
 @include('layouts.hdjs')
 @include('layouts.message')
 
@@ -161,5 +119,21 @@
         hdjs.validCode(option);
     })
 </script>
+{{--<!-- Libs JS -->--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/jquery/dist/jquery.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/chart.js/dist/Chart.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/chart.js/Chart.extension.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/highlight/highlight.pack.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/flatpickr/dist/flatpickr.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/jquery-mask-plugin/dist/jquery.mask.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/list.js/dist/list.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/quill/dist/quill.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/dropzone/dist/min/dropzone.min.js"></script>--}}
+{{--<script src="{{asset ('org/Dashkit-1.1.2/assets')}}/libs/select2/dist/js/select2.min.js"></script>--}}
+
+{{--<!-- Theme JS -->--}}
+
+
 </body>
 </html>

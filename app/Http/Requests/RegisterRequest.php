@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class RegisterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,9 +23,9 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-			'name'    =>'required' ,
-			'email'   =>'email|unique:users' ,
+		return [
+
+			'email'   =>'email' ,
 			'password'=>'required|min:3|confirmed' ,
 			'code'    =>[
 				'required' ,
@@ -41,9 +41,9 @@ class UserRequest extends FormRequest
 	public function messages()
 	{
 		return [
-			'name.required'     =>'请输入昵称' ,
+
 			'email.email'       =>'请输入正确邮箱' ,
-			'email.unique'      =>'该邮箱已注册' ,
+
 			'password.required' =>'请输入密码' ,
 			'password.min'      =>'密码不得少于3位' ,
 			'password.confirmed'=>'两次输入密码不一致' ,

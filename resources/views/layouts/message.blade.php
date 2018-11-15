@@ -1,4 +1,4 @@
-//正确弹窗
+
 <script>
     @if (session()->has('danger'))
     require(['hdjs'], function (hdjs) {
@@ -10,7 +10,7 @@
     })
     @endif
 </script>
-//错误弹窗
+
 <script>
     @if (session()->has('success'))
     require(['hdjs'], function (hdjs) {

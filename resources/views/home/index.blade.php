@@ -37,6 +37,7 @@
 
         <!-- Form -->
         <form class="form-inline mr-4 d-none d-lg-flex">
+            @csrf
             <div class="input-group input-group-rounded input-group-merge" data-toggle="lists" data-lists-values='["name"]'>
 
                 <!-- Input -->
@@ -525,23 +526,27 @@
             </div>
 
             <!-- Dropdown -->
+            @auth()
             <div class="dropdown">
 
                 <!-- Toggle -->
-                {{--<a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                    {{--<img src="{{asset ('org/Dashkit-1.1.2/assets')}}/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">--}}
-                {{--</a>--}}
+                <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{auth()->user()->icon}}" alt="..." class="avatar-img rounded-circle">
+                </a>
 
                 <!-- Menu -->
-                {{--<div class="dropdown-menu dropdown-menu-right">--}}
-                    {{--<a href="profile-posts.html" class="dropdown-item">Profile</a>--}}
-                    {{--<a href="settings.html" class="dropdown-item">Settings</a>--}}
-                    {{--<hr class="dropdown-divider">--}}
-                    {{--<a href="sign-in.html" class="dropdown-item">Logout</a>--}}
-                {{--</div>--}}
-                <button>登陆</button>
-                <button>注册</button>
-
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="profile-posts.html" class="dropdown-item">{{auth ()->user ()->name}}</a>
+                    @if(auth ()->user ()->is_admin ==1)
+                    <a href="{{route ('admin.index')}}" class="dropdown-item">后台管理</a>
+                    @endif
+                    <hr class="dropdown-divider">
+                    <a href="{{route ('logoff')}}" class="dropdown-item">退出登陆</a>
+                </div>
+            @else
+                <a href="{{route ('register')}}" class="btn btn-white btn-sm" style="color:red; font-size: 12px ;background: #999999">注册</a>&nbsp
+                <a href="{{route ('login')}}" class="btn btn-white btn-sm" style="background: #999999;">登陆</a>
+            @endauth
             </div>
 
         </div>
