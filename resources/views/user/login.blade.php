@@ -16,7 +16,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset ('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>Dashkit</title>
+    <title>登陆</title>
 </head>
 <body class="d-flex align-items-center bg-white border-top-2 border-primary">
 
@@ -85,7 +85,12 @@
                         </div>
 
                     </div>
-                    <a href="{{route ('passwordReset')}}" style="font-size: 13px; float: right">忘记密码</a>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="remember" id="remember" value="1">
+                        <label class="form-check-label" for="remember" style="font-size: 13px; color: #999999">记住密码</label>
+                        <a href="{{route ('passwordReset')}}" style="font-size: 11px; float: right">忘记密码</a>
+                    </div>
+
                 </div>
                 <button class="btn btn-lg btn-block btn-primary mb-3">
 

@@ -36,8 +36,8 @@ class UserController extends Controller
 		]);
 		//执行登陆
 		$attestation=$request->only ('email','password');
-		if (\Auth::attempt ($attestation)){
-
+		if (\Auth::attempt ($attestation,$request->remember)){
+			//登陆成功,跳转首页并提示成功语句
 			return redirect ()->route ('home')->with ('success','登陆成功');
 		}
 		return redirect ()->back ()->with ('danger','用户名密码不存在');

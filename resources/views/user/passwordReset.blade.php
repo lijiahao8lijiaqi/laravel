@@ -89,7 +89,7 @@
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
-                        修改完成&nbsp|&nbsp <a href="{{route ('login')}}" style="color: red">去登陆</a>.
+                    已经修改完成|<a href="{{route ('login')}}" style="color: red">去登陆</a>.
                     </small>
                 </div>
 

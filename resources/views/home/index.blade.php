@@ -16,7 +16,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset ('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
 
-    <title>Dashkit</title>
+    <title>首页</title>
 </head>
 <body>
 
@@ -526,9 +526,9 @@
             </div>
 
             <!-- Dropdown -->
-            @auth()
-            <div class="dropdown">
 
+            <div class="dropdown">
+            @auth()
                 <!-- Toggle -->
                 <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src="{{auth()->user()->icon}}" alt="..." class="avatar-img rounded-circle">
@@ -537,15 +537,15 @@
                 <!-- Menu -->
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="profile-posts.html" class="dropdown-item">{{auth ()->user ()->name}}</a>
-                    @if(auth ()->user ()->is_admin ==1)
+                    @can('view',auth ()->user ())
                     <a href="{{route ('admin.index')}}" class="dropdown-item">后台管理</a>
-                    @endif
+                    @endcan
                     <hr class="dropdown-divider">
                     <a href="{{route ('logoff')}}" class="dropdown-item">退出登陆</a>
                 </div>
             @else
-                <a href="{{route ('register')}}" class="btn btn-white btn-sm" style="color:red; font-size: 12px ;background: #999999">注册</a>&nbsp
-                <a href="{{route ('login')}}" class="btn btn-white btn-sm" style="background: #999999;">登陆</a>
+                <a href="{{route ('register')}}" class="btn btn-white btn-sm">注册</a>&nbsp
+                <a href="{{route ('login')}}" class="btn btn-white btn-sm">登陆</a>
             @endauth
             </div>
 

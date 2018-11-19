@@ -11,7 +11,7 @@
 |
 */
 //主页面
-Route::get ('/','HomeController@index')->name ('home');
+Route::get ('/','Home\HomeController@index')->name ('home');
 //Route::get ('home','HomeController@index')->name ('home');
 //用户管理
 //登陆路由
@@ -32,4 +32,5 @@ Route::any ('code/send','Util\CodeController@send')->name ('code.send');
 //模拟数据密码secret
 Route::group (['middleware' => ['admin.auth'],'prefix'=>'admin','namespace'=>'Admin','as'=>'admin.'],function (){
 	Route::get ('admin','IndexController@index')->name ('index');
+	Route::resource('category','CategoryController');
 });
