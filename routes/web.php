@@ -13,6 +13,16 @@
 //主页面
 Route::get ('/','Home\HomeController@index')->name ('home');
 //Route::get ('home','HomeController@index')->name ('home');
+Route::group (['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
+	Route::get ('/','HomeController@index')->name ('index');
+	//文章管理
+	Route::resource ('article','ArticleController');
+});
+//会员中心
+Route::group (['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function (){
+	Route::resource ('user','UserController');
+
+});
 //用户管理
 //登陆路由
 Route::get ('login','UserController@login')->name ('login');
@@ -26,7 +36,13 @@ Route::post ('passwordReset','UserController@passwordResetForm')->name ('passwor
 //退出登陆路由
 Route::get ('logoff','UserController@logoff')->name ('logoff');
 //工具
-Route::any ('code/send','Util\CodeController@send')->name ('code.send');
+Route::group (['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function (){
+	Route::any ('code/send','CodeController@send')->name ('code.send');
+	Route::any ('upload','UploatController@uploader')->name ('upload');
+	Route::any ('filesLists','UploadController@filesLists')->name ('filesLists');
+
+});
+
 
 //后台路由
 //模拟数据密码secret

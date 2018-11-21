@@ -5,7 +5,7 @@ namespace App\Policies;
 use App\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class Userpolicy
+class UserPolicy
 {
     use HandlesAuthorization;
 
@@ -80,4 +80,9 @@ class Userpolicy
     {
         //
     }
+	//判断指定用户是否为登录用户
+	public function isMine (User $user,User $model)
+	{
+		return $user->id == $model->id;
+	}
 }

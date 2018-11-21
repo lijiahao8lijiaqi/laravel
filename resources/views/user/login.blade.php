@@ -88,7 +88,7 @@
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input" name="remember" id="remember" value="1">
                         <label class="form-check-label" for="remember" style="font-size: 13px; color: #999999">记住密码</label>
-                        <a href="{{route ('passwordReset')}}" style="font-size: 11px; float: right">忘记密码</a>
+                        <a href="{{route ('passwordReset')}}" style="font-size: 11px; float: right">忘记密码?</a>
                     </div>
 
                 </div>
@@ -101,7 +101,7 @@
                     <small class="text-muted text-center">
 
                         {{--<a href="{{route ('home')}}" style="font-size: 18px">返回首页</a><br><br>--}}
-                        还没账号&nbsp|&nbsp <a href="{{route ('register')}}" style="font-size: 12px; color: red">去注册</a>.
+                        还没账号|马上去 <a href="{{route ('register')}}" style="font-size: 12px; color: red">注册</a>
 
                     </small>
                 </div>
@@ -121,7 +121,7 @@
             //按钮
             el: '#bt',
             //后台链接
-            url: '{{route ('code.send')}}',
+            url: '{{route ('util.code.send')}}',
             //验证码等待发送时间
             timeout: 30,
             //表单，手机号或邮箱的INPUT表单

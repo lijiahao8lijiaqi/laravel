@@ -132,7 +132,7 @@
                     <small class="text-muted text-center">
                         {{--<a href="{{route ('passwordReset')}}" style="font-size: 15px">修改密码</a>--}}
                         {{--<a href="{{route ('home')}}" style="font-size: 18px">返回首页</a><br><br>--}}
-                        已有账号&nbsp|&nbsp <a href="{{route ('login')}}" style="font-size: 12px; color: red">去登陆</a>.
+                        已有账号|马上去<a href="{{route ('login')}}" style="font-size: 12px; color:red">登陆</a>
 
                     </small>
                 </div>
@@ -152,7 +152,7 @@
             //按钮
             el: '#bt',
             //后台链接
-            url: '{{route ('code.send')}}',
+            url: '{{route ('util.code.send')}}',
             //验证码等待发送时间
             timeout: 30,
             //表单，手机号或邮箱的INPUT表单

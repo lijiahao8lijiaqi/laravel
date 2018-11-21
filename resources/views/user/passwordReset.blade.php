@@ -15,7 +15,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset ('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>重置密码</title>
+    <title>修改密码</title>
 </head>
 <body class="d-flex align-items-center bg-white border-top-2 border-primary">
 
@@ -89,7 +89,7 @@
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
-                    已经修改完成|<a href="{{route ('login')}}" style="color: red">去登陆</a>.
+                    已经修改完成|去 <a href="{{route ('login')}}" style="color: red">登陆</a>
                     </small>
                 </div>
 
@@ -110,7 +110,7 @@
             //按钮
             el: '#bt',
             //后台链接
-            url: '{{route ('code.send')}}',
+            url: '{{route ('util.code.send')}}',
             //验证码等待发送时间
             timeout: 30,
             //表单，手机号或邮箱的INPUT表单

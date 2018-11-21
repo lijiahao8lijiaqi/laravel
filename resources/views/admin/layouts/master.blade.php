@@ -78,7 +78,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
-                        <i class="fe fe-file"></i> 文章系统
+                        <i class="fe fe-file"></i> 文章管理
                     </a>
                     <div class="collapse show" id="sidebarPages">
                         <ul class="nav nav-sm flex-column">
@@ -92,7 +92,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
-                        <i class="fe fe-user"></i> Authentication
+                        <i class="fe fe-user"></i> 精选文章
                     </a>
                     <div class="collapse show" id="sidebarAuth">
                         <ul class="nav nav-sm flex-column">
@@ -107,7 +107,7 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#sidebarLayouts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="fe fe-layout"></i> Layouts
+                        <i class="fe fe-layout"></i> 会员中心
                     </a>
                     <div class="collapse show" id="sidebarLayouts">
                         <ul class="nav nav-sm flex-column">
@@ -295,7 +295,7 @@
                     </a>
                     <!-- Menu -->
                     <div class="dropdown-menu" aria-labelledby="sidebarIconCopy">
-                        <a href="{{route('logoff')}}" class="dropdown-item">注销登录</a>
+                        <a href="{{route('logoff')}}" class="dropdown-item">退出登录</a>
                     </div>
                 </div>
 
