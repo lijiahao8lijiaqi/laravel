@@ -21,6 +21,7 @@ Route::group (['prefix'=>'home','namespace'=>'Home','as'=>'home.'],function (){
 //会员中心
 Route::group (['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function (){
 	Route::resource ('user','UserController');
+	Route::get ('attention/{user}','UserController@attention')->name ('attention');
 
 });
 //用户管理
@@ -38,7 +39,7 @@ Route::get ('logoff','UserController@logoff')->name ('logoff');
 //工具
 Route::group (['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function (){
 	Route::any ('code/send','CodeController@send')->name ('code.send');
-	Route::any ('upload','UploatController@uploader')->name ('upload');
+	Route::any ('upload','UploadController@uploader')->name ('upload');
 	Route::any ('filesLists','UploadController@filesLists')->name ('filesLists');
 
 });

@@ -14,6 +14,7 @@ class CreateArticlesTable extends Migration
     public function up()
     {
         Schema::create('articles', function (Blueprint $table) {
+			$table->engine = 'InnoDB';
             $table->increments('id');
             $table->string ('title')->default ('')->comment ('文章标题');
             //外键约束

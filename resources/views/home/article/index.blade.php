@@ -15,7 +15,7 @@
                                     <!-- Title -->
                                     <div>
 
-                                            <a class="btn btn-secondary " href="{{route ('home.index')}}">返回首页</a>
+                                            <a class="btn btn-secondary btn-sm" href="{{route ('home.index')}}">返回首页</a>
 
 
 

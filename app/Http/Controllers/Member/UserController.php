@@ -80,13 +80,16 @@ class UserController extends Controller
 			$data['password'] = bcrypt($data['password']);
 		}
 		//执行更新
+		//dd ($data);
 		$user->update($data);
 		return back()->with('success','操作成功');
     }
 
-
-    public function destroy(User $user)
-    {
-        //
-    }
+	//关注跟取消关注
+	public function attention (User $user)
+	{
+		//dd ($user->toArray ());
+		$user->fans()->toggle(auth()->user());
+		return back();
+	}
 }
