@@ -33,7 +33,7 @@
 
         <!-- Brand -->
         {{--头部图片--}}
-        <a class="navbar-brand mr-auto" href="index.html">
+        <a class="navbar-brand mr-auto" href="javascript:;">
             <img src="{{asset('org/images/jld.jpg')}}" alt="..." class="navbar-brand-img">
         </a>
 

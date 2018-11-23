@@ -85,4 +85,9 @@ class UserPolicy
 	{
 		return $user->id == $model->id;
 	}
+
+	public function isNotMine (User $user,User $model)
+	{
+		return $user->id != $model->id;
+	}
 }

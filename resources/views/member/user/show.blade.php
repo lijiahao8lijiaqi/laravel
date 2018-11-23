@@ -22,6 +22,7 @@
                                                 </h4>
 
                                             </div>
+                                            @can('isMine',$user)
                                             <div class="col-auto">
                                                 <!-- Button -->
                                                 <a href="{{route ('home.article.create')}}" class="btn btn-sm btn-primary">
@@ -29,6 +30,7 @@
                                                 </a>
 
                                             </div>
+                                                @endcan
                                         </div> <!-- / .row -->
                                     </div>
 
@@ -91,12 +93,6 @@
                                                 </div> <!-- / .row -->
 
                                             </li>
-
-
-
-
-
-
                                             @endforeach
                                         </ul>
 

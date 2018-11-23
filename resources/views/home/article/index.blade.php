@@ -45,14 +45,20 @@
                                     </div>
 
                                 </div>
-                                <div class="col-auto">
 
+                                <div class="col-auto">
+                                @auth()
                                     <!-- Button -->
-                                    <a href="{{route('home.article.create')}}" class="btn btn-sm btn-primary">
+                                    <a href="{{route ('home.article.create')}}" class="btn btn-sm btn-primary">
                                         发表文章
                                     </a>
-
+                                    @else
+                                        <a href="{{route('login',['from'=>url()->full()])}}" class="btn btn-sm btn-primary">
+                                            发表文章
+                                        </a>
+                                  @endauth
                                 </div>
+
                             </div> <!-- / .row -->
                         </div>
 
@@ -79,14 +85,15 @@
                                                 </h4>
 
                                                 <p class="card-text small mb-1">
-                                                    <a href="" class="text-secondary mr-2">
+                                                    <a href="javascript:;" class="text-secondary mr-2">
                                                         <i class="fa fa-user-circle" aria-hidden="true"></i> {{$article->user->name}}
                                                     </a>
 
                                                     <i class="fa fa-clock-o" aria-hidden="true"></i> {{$article->created_at->diffForHumans()}}
 
-                                                    <a href="http://www.houdunren.com/edu/topics_1.html" class="text-secondary ml-2">
-                                                        <i class="fa fa-folder-o" aria-hidden="true"></i> {{$article->category->title}} </a>
+                                                    <a href="javascript:;" class="text-secondary ml-2">
+                                                        <i class="fa fa-folder-o" aria-hidden="true"></i> {{$article->category->title}}
+                                                    </a>
                                                 </p>
 
                                             </div>

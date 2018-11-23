@@ -92,4 +92,17 @@ class UserController extends Controller
 		$user->fans()->toggle(auth()->user());
 		return back();
 	}
+	//关注我的人
+	public function myFans (User $user)
+	{
+
+		$fans = $user->fans()->paginate(12);
+		return view ('member.user.my_fans',compact ('user','fans'));
+	}
+
+	public function myFollowing (User $user)
+	{
+		$followings = $user->following()->paginate(10);
+		return view ('member.user.my_following',compact ('user','followings'));
+	}
 }
