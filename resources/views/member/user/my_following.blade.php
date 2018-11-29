@@ -33,7 +33,7 @@
                                               </span>
                                             </p>
                                             @auth()
-
+                                                @can('isNotMine',$following)
                                             <hr>
 
                                             <div class="row align-items-center justify-content-between">
@@ -50,6 +50,7 @@
 
                                                 </div>
                                             </div>
+                                                    @endcan
                                                 @endauth
 
                                         </div>

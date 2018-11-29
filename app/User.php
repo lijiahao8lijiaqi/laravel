@@ -3,6 +3,9 @@
 namespace App;
 
 use App\Models\Attachment;
+use App\Models\Collate;
+use App\Models\Zan;
+use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -28,6 +31,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token'
     ];
+
+    //把已读的排后面
+	public function notifications()
+	{
+		return $this->morphMany(DatabaseNotification::class, 'notifiable')->orderBy('read_at', 'asc')->orderBy('created_at', 'desc');
+	}
+    //获取所有数据的默认头像
 	public function getIconAttribute( $key )
 	{
 		return $key?:asset('org/images/user.jpg');
@@ -48,5 +58,16 @@ class User extends Authenticatable
 	public function following ()
 	{
 		return $this->belongsToMany (User::class,'followers','following_id','user_id');
+	}
+	//获取我的收藏
+	public function collate ()
+	{
+		return $this->hasMany (Collate::class);
+	}
+
+	//获取用户关联赞
+	public function zan ()
+	{
+		return $this->hasMany (Zan::class);
 	}
 }

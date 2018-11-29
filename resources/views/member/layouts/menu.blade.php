@@ -31,6 +31,11 @@
                     修改昵称
                 </a>
             </div>
+                <div class="nav flex-column nav-pills ">
+                    <a href="{{route ('member.notify',[$user,'type'=>'name'])}}" class="nav-link text-muted {{active_class(if_route(['member.notify']) && if_query('type', 'name'), 'active', '')}}">
+                        我的通知
+                    </a>
+                </div>
             @endcan
 
         </div>
@@ -39,13 +44,41 @@
         <div class="card-body text-center">
             <div class="nav flex-column nav-pills">
                 <a href="{{route ('member.my_fans',$user)}}" class="nav-link text-muted {{active_class(if_route(['member.my_fans']), 'active', '')}}">
-                    关注我的人
+                    @can('isMine',$user)
+                        我的粉丝
+                    @else
+                        他的粉丝
+                    @endcan
                 </a>
                 <a href="{{route ('member.my_following',$user)}}" class="nav-link text-muted {{active_class(if_route(['member.my_following']), 'active', '')}}">
-                    我关注的人
+                    @can('isMine',$user)
+                        我的关注
+                    @else
+                        他的关注
+                    @endcan
+                </a>
+                <a href="{{route ('member.my_zan',[$user,'type'=>'article'])}}" class="nav-link text-muted {{active_class(if_route(['member.my_zan']), 'active', '')}}">
+                    @can('isMine',$user)
+                        我的点赞
+                    @else
+                        他的点赞
+                    @endcan
+                </a>
+                {{--<a href="" class="nav-link text-muted {{active_class(if_route(['member.my_following']), 'active', '')}}">--}}
+                    {{--我赞过的人--}}
+                {{--</a>--}}
+                <a href="{{route ('member.my_collate',$user)}}" class="nav-link text-muted {{active_class(if_route(['member.my_collate']), 'active', '')}}">
+                    我的收藏
                 </a>
 
             </div>
         </div>
     </div>
 </div>
+@push('css')
+    <style>
+        .active{
+            color:white!important;
+        }
+    </style>
+@endpush

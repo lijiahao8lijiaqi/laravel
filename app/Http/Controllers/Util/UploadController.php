@@ -48,7 +48,7 @@ class UploadController extends Controller
 	//获取图片列表
 	public function filesLists ()
 	{
-		$files = auth()->user()->attachment()->paginate(10);
+		$files = auth()->user()->attachment()->paginate(3);
 
 		$data = [];
 		foreach($files as $file){

@@ -33,6 +33,7 @@
                   </span>
                         </p>
                     @auth()
+                        @can('isNotMine',$fan)
                         <hr>
 
                         <div class="row align-items-center justify-content-between ">
@@ -49,6 +50,7 @@
 
                             </div>
                         </div>
+                            @endcan
                         @endauth
 
                     </div>

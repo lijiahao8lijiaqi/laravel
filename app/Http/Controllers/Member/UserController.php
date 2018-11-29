@@ -3,17 +3,20 @@
 namespace App\Http\Controllers\Member;
 
 use App\Models\Article;
+use App\Models\Zan;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+	public function __construct()
+	{
+		$this->middleware( 'auth' , [
+			'only'=>[ 'edit' , 'update' , 'attention' ]
+		] );
+	}
     public function index()
     {
         //
@@ -99,10 +102,34 @@ class UserController extends Controller
 		$fans = $user->fans()->paginate(12);
 		return view ('member.user.my_fans',compact ('user','fans'));
 	}
-
+		//我关注的人
 	public function myFollowing (User $user)
 	{
 		$followings = $user->following()->paginate(10);
 		return view ('member.user.my_following',compact ('user','followings'));
+	}
+
+	//我的收藏
+	public function myCollate (User $user,Request $request)
+	{
+		$type = $request->query('type');
+		//dd ($type);
+		//通过用户查找该用户所有点赞数据
+		$data=[];
+		$collateData=$user->collate()->paginate( 3 );
+
+		return view ('member.user.my_collate',compact ('user','collateData'));
+	}
+
+	//我的点赞
+	public function myZan (User $user, Request $request )
+	{
+		$type = $request->query('type');
+		//dd ($type);
+		//通过用户查找该用户所有点赞数据
+		$data=[];
+		$zansData=$user->zan()->where( 'zan_type' , 'App\Models\\' . ucfirst( $type ) )->paginate( 10 );
+		//dd ($zansData);
+		return view ('member.user.my_zan_' . $type, compact ('user','zansData'));
 	}
 }

@@ -47,7 +47,7 @@
 
                                                         <!-- Title -->
                                                         <h4 class="card-title mb-1 name">
-                                                            <a href="javascript:;">{{$user->title}}</a>
+                                                            <a href="javascript:;">{{$article->title}}</a>
                                                         </h4>
 
                                                         <p class="card-text small mb-1">

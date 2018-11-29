@@ -7,12 +7,33 @@
 
                     <div class="row">
 
+                            <div class="btn-sm">
+                                <a class="btn btn-secondary " href="{{route ('home.article.index')}}">返回列表</a>
+
+                            </div>
+
+
                         <div class="col text-right">
-                            <a href="" class="btn btn-xs">
-                                <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏
-                            </a>
+                            @auth()
+                                @if ($article->collate->where('user_id',auth()->id ())->first())
+                                    <a href="{{route ('home.enshrine',['type'=>'article','id'=>$article['id']])}}" class="btn btn-xs ">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i> 已收藏
+                                    </a>
+                                    @else
+                                    <a href="{{route ('home.enshrine',['type'=>'article','id'=>$article['id']])}}" class="btn btn-xs">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏
+                                    </a>
+                                @endif
+                            @else
+                                        <a href="{{route ('login',['from'=>url()->full()])}}" class="btn btn-xs">
+                                            <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏
+                                        </a>
+
+
+                                @endauth
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col text-center">
                             <h2 class="mb-4">
@@ -45,15 +66,30 @@
                             </div>
                         </div>
                     </div>
-
-                    <div>
-                        <div class="col  text-right">
-                            <a class="btn btn-secondary " href="{{route ('home.article.index')}}">返回列表</a>
+                        <div class="text-center">
+                            @auth()
+                                @if ($article->zan->where('user_id',auth()->id())->first())
+                                    <a class="btn btn-white" href="{{route ('home.zan.make',['type'=>'article','id'=>$article['id']])}}">👍 已赞</a>
+                               @else
+                                    <a class="btn btn-white" href="{{route ('home.zan.make',['type'=>'article','id'=>$article['id']])}}">👍 赞</a>
+                                @endif
+                            @else
+                                    <a class="btn btn-white" href="{{route ('login',['from'=>url()->full()])}}">👍 赞</a>
+                            @endauth
                         </div>
+                    <div class="avatar-group d-none d-sm-flex">
+                        @foreach($article->zan as $zan)
+                            <a href="{{route('member.user.show',$zan->user)}}" class="avatar avatar-xs" data-toggle="tooltip" title="" data-original-title="Ab Hadley">
+                                <img src="{{$zan->user->icon}}" alt="..." class="avatar-img rounded-circle border border-white">
+                            </a>
+                        @endforeach
+
                     </div>
+
                 </div>
                 @include('home.layouts.comment')
             </div>
+
             <div class="col-12 col-xl-3">
                 <div class="card">
                     <div class="card-header">
